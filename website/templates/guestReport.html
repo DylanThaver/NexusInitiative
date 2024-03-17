@@ -1,0 +1,105 @@
+{% extends "base.html" %} {% block title %}report{% endblock %}
+
+{% block content %} 
+<form method="POST" enctype="multipart/form-data">
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <meta charset="utf-8" />
+            <title></title>
+            <style>
+                .button {
+                    position: absolute;
+                    top: 50%;
+                    background-color: #0a0a23;
+                    color: #fff;
+                    border: none;
+                    border-radius: 10px;
+                    position:relative; top:50px;
+                    width: 250px;
+                    transition: 0.3s ease;
+                }
+                .button:hover{
+                    transform:scale(1.1);
+                }
+
+                .text {
+                    font-size: 20px;
+                    float: left;
+                    color: black;
+                    background-color: rgba(0,0,0,.4);
+                    color: #fff;
+                    border-radius: 20px;
+                    margin-bottom:-150px;
+                    backdrop-filter: blur(9px);
+                }
+                .heading{
+                    text-align:center;
+                    color: rgb(0, 0, 0)
+                }
+
+                body {
+                    background-image: url(https://scontent-jnb2-1.xx.fbcdn.net/v/t39.30808-6/424742507_800847568753986_4687842624997783088_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=eekncZ97T80AX_GXsvN&_nc_ht=scontent-jnb2-1.xx&oh=00_AfBm6bDS6lQpOHItNeG2691GdsY16_CXNoT3Lv6xdM3Kng&oe=65F5D353);
+                    background-size: cover;
+                    background-attachment: fixed;
+                }
+        
+            </style>
+        </head>
+        <body>
+        <br/>
+        <br/>
+            <div class="heading">
+                <h1>DUT HELP DESK</h1>
+                <h2>Hi there, here are things we can help you with.</h2>
+                <img src="{{url_for('static', filename='images/tools.png')}}" height="100" width="100" />
+                <br />
+                <br />
+                <h3>Maintenance Report</h3>
+                <h4>Log a maintenance report with us</h4>
+            </div>
+            <div class="text" style="text-align:left">
+                <h3>Submit A Report</h3>
+                <br />
+                <label for="BuildingCode">Building Code*:</label>
+                <input style="background-color:lightgrey" type="text" id="BCode" name="BCode" required>
+                <br />
+                <br />
+                <label for="RoomNumber">Room Number:</label>
+                <input style="background-color:lightgrey" type="text" id="RNumber" name="RNumber" required>
+                <br />
+                <br />
+                <label for="locations">Select Campus:</label>
+                <select style="background-color:lightgrey" id="locations" name="campus">
+                    <option value="" selected disabled>Please select an option</option>
+                    <option value="Steve Biko">Steve Biko</option>
+                    <option value="Ritson">Ritson</option>
+                    <option value="ML Sultan">ML Sultan</option>
+                </select>
+                <br />
+                <br />
+                <label for="freeform">Add Details*:</label>
+                <br />
+                <textarea style="background-color:lightgrey" id="freeform" name="details" rows="4" cols="50" required></textarea>
+                <br />
+                <br />
+                <label for="image">Provide an image:</label>
+                <input type="file" id="image" name="image" accept="image/png, image/jpeg" />
+
+                <br />
+                <br />
+                <label>Severity*:</label>
+                <br />
+                <select style="background-color:lightgrey" id="severity" name="stars" required>
+                    <option value="" selected disabled>Please select an option</option>
+                    <option value="Low">Low</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="High">High</option>
+                </select>
+                <br />
+                <button class="button" type="submit" width="800px">SUBMIT REPORT</button>
+            </div>
+        </body>
+
+    </html> 
+</form>
+{% endblock %}

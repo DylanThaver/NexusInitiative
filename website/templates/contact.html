@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            background-image: url(https://www.dut.ac.za/wp-content/uploads/2021/08/DUT11.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            backdrop-filter: blur(10px);
+        }
+        .contact {
+            background-color: rgba(0,0,0,.4);
+            color: #fff;
+            border-radius: 20px;
+            border-collapse: collapse;
+            margin-right: 200px;
+        }
+    </style>
+</head>
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    <br/>
+    <br/>
+    <div class="contact">
+        <h1>CONTACTS:</h1>
+        <h2><font color="black"> WHERE ARE YOU LOCATED?: </font></h2>
+        <h3><font color="blue"> Steve Biko: </font></h3><img src={{url_for('static', filename='images/Call.jpg')}} height="100" width="100" />
+        <h4>
+            031 373 2266 – Student Counselling Steve Biko Campus
+            <br />otrinahn@dut.ac.za (Student Counselling)
+            <br />
+            <br />031 373 2223 – Isolempilo Health Clinic: Steve Biko
+            <br />leratom1@dut.ac.za (Isolempilo Health Clinic)
+            <br />
+            <br />031 373 2571 – Career Resource Centre
+            <br />PhumzileM3@dut.ac.za (Career Resource Centre)
+        </h4>
+        <br />
+        <h3><font color="blue"> Ritson: </font></h3><img src={{url_for('static', filename='images/Call.jpg')}} height="100" width="100" />
+        <h4>
+            031 373 6010 – Ritson Health Clinic
+            <br />leratom1@dut.ac.za (Student Health Clinic)
+        </h4>
+        <br />
+        <h3><font color="blue"> ML Sultan: </font></h3><img src={{url_for('static', filename='images/Call.jpg')}} height="100" width="100" />
+        <h4>
+            031 373 2679 – ML Sultan Clinic
+        </h4>
+    </div>
+</body>
+{% endblock %}
+</html>

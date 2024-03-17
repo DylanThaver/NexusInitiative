@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Student Maps and view reports</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            display:flow;
+            background-image: url(https://www.grantpitcher.com/wp-content/uploads/2014/12/dut-indumiso-campus_17.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            background-size: 100%;
+        }
+
+        .maps {
+            float: left;
+            color: black;
+            background-color: rgba(0,0,0,.4);
+            color: #fff;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    <br/>
+    <br/>
+    <h1>Student Maps</h1>
+    <br />
+    <div class="maps">
+        <h1>Steve Biko Map</h1>
+        <img src={{url_for('static', filename='images/SteveBikoMap.jpg')}} height="900" width="800" />
+        <br />
+        <h1>Ritson Map</h1>
+        <img src={{url_for('static', filename='images/RitsonMap.jpg')}} height="900" width="800" />
+        <br />
+        <h1>ML Sultan Map</h1>
+        <img src={{url_for('static', filename='images/MLSultanMap.jpg')}} height="900" width="800" />
+    </div>
+</body>
+{% endblock %}
+</html>

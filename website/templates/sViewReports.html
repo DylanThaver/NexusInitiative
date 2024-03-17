@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block title %}Sign up{% endblock %}
+
+
+{% block content %}
+
+<!DOCTYPE html>
+<form method="POST">
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <meta charset="utf-8" />
+            <title></title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+            <style>
+                table {
+                    background-color: lightgray;
+                    border-collapse: collapse;
+                    width: 100%; /* Adjusted width for better visibility */
+                }
+        
+                th {
+                    background-color: black;
+                    color: white;
+                    width: 15%; /* Adjusted width for better visibility */
+                }
+        
+                td, th {
+                    padding: 5px;
+                    border: 1px solid black;
+                    text-align: center; /* Center-align content */
+                }
+                
+                body {
+                    background-image: url(https://sanudc.weebly.com/uploads/1/1/5/5/115547363/20160721-091014_orig.jpg);
+                    background-size: cover;
+                    background-attachment: fixed;
+                }
+            </style>
+</head>
+<body>
+    <br/>
+    <br/>
+<h2>Reports</h2>
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>Student Number</th>
+        <th>Campus</th>
+        <th>Details</th>
+        <th>Image</th>
+        <th>Severity</th>
+
+
+    </tr>
+    {% for user in all_users %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.sNum }}</td>
+        <td>{{ user.campus }}</td>
+        <td>{{ user.details }}</td>       
+        <td>{{ user.image_given }}</td>    
+        <td>{{ user.severity }}</td>  
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+</form>
+{% endblock %}

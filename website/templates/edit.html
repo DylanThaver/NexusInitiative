@@ -1,0 +1,148 @@
+{% extends "base.html" %} {% block title %}report{% endblock %}
+
+{% block content %} 
+<form method="POST">
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <meta charset="utf-8" />
+            <title></title>
+            <style>
+                .button {
+                    position: absolute;
+                    top: 50%;
+                    background-color: #0a0a23;
+                    color: #fff;
+                    border: none;
+                    border-radius: 10px;
+                    position:relative; top:-5px; bottom:80px;
+                    width: 250px;
+                
+                }
+                * {
+                    margin: 0;
+                    padding: 0;
+                }
+        
+                .rate {
+                    float: left;
+                    height: 46px;
+                    padding: 0 0px;
+                }
+        
+                    .rate:not(:checked) > input {
+                        position: absolute;
+                        top: -9999px;
+                    }
+        
+                    .rate:not(:checked) > label {
+                        float: right;
+                        width: 1em;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        cursor: pointer;
+                        font-size: 30px;
+                        color: #ccc;
+                    }
+        
+                        .rate:not(:checked) > label:before {
+                            content: '★ ';
+                        }
+        
+                    .rate > input:checked ~ label {
+                        color: #ffc700;
+                    }
+        
+                    .rate:not(:checked) > label:hover,
+                    .rate:not(:checked) > label:hover ~ label {
+                        color: #deb217;
+                    }
+        
+                    .rate > input:checked + label:hover,
+                    .rate > input:checked + label:hover ~ label,
+                    .rate > input:checked ~ label:hover,
+                    .rate > input:checked ~ label:hover ~ label,
+                    .rate > label:hover ~ input:checked ~ label {
+                        color: #c59b08;
+                    }
+                .register-link p a {
+                    color: #ffffff;
+                     text-decoration: none;
+                     font-weight: 600;
+                    }
+
+              .register-link p a:hover {
+                  text-decoration: underline;
+                }
+                body {
+                    background-image: url(https://www.dut.ac.za/wp-content/uploads/2020/12/capus-pics-city-1.jpg);
+                    background-size: cover;
+                    background-attachment: fixed;
+                }
+                .text {
+                    font-size: 20px;
+                    float: left;
+                    color: black;
+                    background-color: rgba(0,0,0,.4);
+                    color: #fff;
+                    border-radius: 20px;
+                    margin-bottom:-150px;
+                }
+            </style>
+        </head>
+        <body style="background-color:lavender">
+            
+            <br/>
+            <br/>
+                <h3>Update A Report</h3>
+                <br />
+                <div class="text" style="text-align:left">
+                <label for="locations">Select Campus:</label>
+                <input type="text" id="location" name="campus" value={{report.campus}}
+                />
+        
+                <br />
+                <br />
+                <label for="freeform">Add Details*:</label>
+                <br>
+                <textarea id="freeform" name="details" rows="4" cols="50">{{report.details}}</textarea>           
+                <br />
+                <br />
+                <label>Severity:</label>
+                <br />
+                <select id="stars" name="stars">
+                    <option value={{report.severity}}>{{report.severity}}</option>
+                    <option value="Low">Low</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="High">High</option>
+                </select>
+                <br />
+                <br />
+                <label>Progress</label>
+                <select id="progress" name="progress">
+                <option value={{report.progress}}>{{report.progress}}</option>
+                <option value="Complete">Complete</option>
+                <option value="In-progress">In-progress</option>
+                <option value="No-progress">No-progress</option>
+                </select>
+                <br />
+                <br />
+                <label for="name">Staff</label>
+                
+                <input type="text" id="inCharge" name="inCharge" value={{report.staff}} 
+                />
+            
+            <br />
+            <br />
+            <div class="register-link">
+                <p><a href="/{{report.id}}/image">View Image attached</a></p>
+            </div>
+            <br />
+            <br />
+            <button class="button" type="submit" 
+            width="800px">UPDATE REPORT</button>
+        </div>
+        </body>
+
+    </html> 
+</form>
+{% endblock %}

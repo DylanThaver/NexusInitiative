@@ -1,0 +1,80 @@
+{% extends "base.html" %} {% block title %}Sign up{% endblock %}
+
+
+{% block content %} 
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Maintenance Report</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        table {
+            background-color: lightgray;
+            border-collapse: collapse;
+            width: 100%; /* Adjusted width for better visibility */
+        }
+
+        th {
+            background-color: black;
+            color: white;
+            width: 15%; /* Adjusted width for better visibility */
+        }
+
+        td, th {
+            padding: 5px;
+            border: 1px solid black;
+            text-align: center; /* Center-align content */
+        }
+
+        body {
+            background-image: url(https://www.dut.ac.za/wp-content/uploads/2022/03/Romeopic-870x580.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .AddRow {
+            background-color: #0a0a23;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            width: 250px;
+            transition: 0.3s ease;
+        }
+
+            .AddRow:hover {
+                transform: scale(1.1);
+            }
+    </style>
+</head>
+<body>
+    <br/>
+    <br/>
+<h2>Students</h2>
+
+<table>
+    <tr>
+        <th>Student Number</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Login id</th>
+        <th>Delete</th>
+    </tr>
+    {% for user in all_users %}
+    <tr>
+        <td>{{ user.student_num }}</td>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.last_name }}</td>
+        <td>{{ user.user_id }}</td>
+        <td> 
+            <span style="font-size: 24px;color:red;">
+            <a href="/{{user.student_num}}/delete1"><i class="fas fa-trash-alt"></i></a></span>  
+               
+        </td>       
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+{% endblock %}

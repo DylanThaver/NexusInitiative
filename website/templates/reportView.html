@@ -1,0 +1,157 @@
+{% extends "base.html" %} {% block title %}Report view{% endblock %}
+
+{% block content %}
+<form method="POST">
+
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <meta charset="utf-8" />
+            <title>Maintenance Report</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+            <style>
+                
+                table {
+                    background-color: lightgray;
+                    border-collapse: collapse;
+                    width: 100%; /* Adjusted width for better visibility */
+                }
+        
+                th {
+                    background-color: black;
+                    color: white;
+                    width: 15%; /* Adjusted width for better visibility */
+                }
+        
+                td, th {
+                    padding: 5px;
+                    border: 1px solid black;
+                    text-align: center; /* Center-align content */
+                }
+        
+                body {
+                    background-image: url(https://www.dut.ac.za/wp-content/uploads/2022/03/Romeopic-870x580.jpg);
+                    background-size: cover;
+                    background-attachment: fixed;
+                    
+                }
+        
+                .AddRow {
+                    background-color: #0a0a23;
+                    color: #fff;
+                    border: none;
+                    border-radius: 10px;
+                    width: 250px;
+                    transition: 0.3s ease;
+                }
+        
+                    .AddRow:hover {
+                        transform: scale(1.1);
+                    }
+
+                .btn {
+                    background-color: #0a0a23;
+                    color: #fff;
+                    border: none;
+                    border-radius: 10px;
+                    width: 200px;
+                    transition: 0.3s ease;
+                }
+                .btn:hover{
+                    transform:scale(1.1);
+                }
+            </style>
+    </head>
+    <body>
+        <br/>
+        <br/>
+    <h2>Reports</h2>
+    
+    <label>Sort by Severity:</label>   
+            <select type="text" id="FilterSeverity" name="FilterSeverity">
+                <!-- Set initially disabled -->
+                <option value="all">All</option>
+                <option value="High">High</a></option>
+                <option value="Moderate">Moderate</option>
+                <option value="Low">Low</option>
+            </select>
+
+            <label>Sort by Progress:</label>
+            <select type="text"id="progress" name="progress">
+                <!-- Set initially disabled -->
+                <option value="all">All</option>
+                <option value="Complete">Complete</option>
+                <option value="In-progress">In-progress</option>
+                <option value="No-progress">No-progress</option>
+            </select>
+
+            <button type="submit" class="btn">Filter</button>
+        <br/>
+        <br/>
+    <table id="myTable">
+        <tr>
+            <th>id</th>
+            <th>Student Number</th>
+            <th>Campus</th>
+            <th>Details</th>
+            <th>Image</th>
+            <th>Severity</th>
+            <th>user_id</th>
+            <th>Progress</th>
+            <th>Staff assigned</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for user in all_users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.sNum }}</td>
+            <td>{{ user.campus }}</td>
+            <td>{{ user.details }}</td>       
+            <td>{{ user.image_given }}</td>    
+            <td id="severity">{{ user.severity }}</td>  
+            <td>{{ user.user_id }}</td> 
+            <td id="progress">{{ user.progress }}</td>
+            <td>{{ user.staff }}</td>
+            <td> 
+                <span style="font-size: 24px;color:red;">
+                    <a href="/{{user.id}}/edit"><i class="fas fa-edit"></i></a></span>  
+
+            </td>
+            <td> 
+                <span style="font-size: 24px;color:red;">
+                <a href="/{{user.id}}/delete2"><i class="fas fa-trash-alt"></i></a></span>  
+                   
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br/>
+    <br/>
+    <script>
+        function filterRows() {
+                var selectedSeverity = document.getElementById("severity").value;
+                var selectedProgress = document.getElementById("progress").value;
+                var table = document.getElementById("myTable");
+                var rows = table.querySelectorAll(".reportRow");
+
+                rows.forEach(function (row) {
+                    row.style.display = "table-row"; // Reset display for all rows
+                });
+
+                rows.forEach(function (row) {
+                    var severityCell = row.cells[2].querySelector('select');
+                    var progressCell = row.cells[3].querySelector('select');
+                    var severityValue = severityCell ? severityCell.value : row.cells[2].textContent.trim();
+                    var progressValue = progressCell ? progressCell.value : row.cells[3].textContent.trim();
+
+                    if ((selectedSeverity !== "all" && severityValue !== selectedSeverity) ||
+                        (selectedProgress !== "all" && progressValue !== selectedProgress)) {
+                        row.style.display = "none"; // Hide rows that don't match filter criteria
+                    }
+                });
+            }
+    </script>
+    </body>
+    </html>
+</form>
+{% endblock %}
